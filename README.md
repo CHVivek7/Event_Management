@@ -20,7 +20,7 @@ This API is divided into two main roles, each with a specific set of permissions
 -   **Full Access Control**: Organizers can view all events and customer details on the platform.
 -   **Customer Management**: Block or unblock customers from booking new events.
 -   **Event Oversight**: Organizers have the authority to cancel any event if necessary.
--   **Secure Endpoints**: All organizer actions are protected and require proper authentication.
+-   **Secure Endpoints & Graceful Error Handling**: All organizer actions are protected, and the API provides clear, consistent error responses.
 
 ---
 
@@ -34,6 +34,19 @@ This project is built with a modern and powerful tech stack to ensure performanc
 -   **Data Persistence**: Spring Data JPA (Hibernate)
 -   **Build Tool**: Maven
 -   **API Testing**: Postman
+
+---
+## 🏛️ Project Structure
+
+The project follows a standard layered architecture to ensure separation of concerns and maintainability.
+
+-   **`config`**: Contains security configurations, including JWT filters.
+-   **`controller`**: Handles all incoming HTTP requests and API endpoints.
+-   **`dto`**: (Data Transfer Objects) - Used to shape the data for API responses and requests, preventing direct exposure of entity models.
+-   **`exception`**: Includes a global exception handler to manage errors gracefully across the application.
+-   **`model`**: Defines the JPA entities that map to database tables.
+-   **`repository`**: Contains the Spring Data JPA interfaces for database operations.
+-   **`service`**: Implements the core business logic of the application.
 
 ---
 
