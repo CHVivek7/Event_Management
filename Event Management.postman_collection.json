@@ -1,0 +1,525 @@
+{
+	"info": {
+		"_postman_id": "6fdd514e-049e-48fa-aa28-c124b5328117",
+		"name": "Event Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46980050",
+		"_collection_link": "https://docking-module-engineer-73310435-2418256.postman.co/workspace/Chintakrindi-Lakshmi-vivek's-Wo~2269a3be-5b94-4099-8cb9-581af0fa0fc7/collection/46980050-6fdd514e-049e-48fa-aa28-c124b5328117?action=share&source=collection_link&creator=46980050"
+	},
+	"item": [
+		{
+			"name": "Registration of Customer",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testcustomer\",\r\n    \"password\": \"password123\",\r\n    \"email\": \"customer@example.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/register/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"register",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register as Organizer",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testorganizer\",\r\n    \"password\": \"password456\",\r\n    \"email\": \"organizer@example.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/register/organizer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"register",
+						"organizer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer Login Request and Token Generation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0Y3VzdG9tZXIiLCJyb2xlIjoiUk9MRV9DVVNUT01FUiIsImlhdCI6MTc1NTcwNzg3NywiZXhwIjoxNzU1Nzk0Mjc3fQ.hCSNs3_8lbSesFDRxYWir2ptIuZAFj07g4o7QsRWUMI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testcustomer\",\r\n    \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Event Register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0Y3VzdG9tZXIiLCJyb2xlIjoiUk9MRV9DVVNUT01FUiIsImlhdCI6MTc1NTc0Nzk1NiwiZXhwIjoxNzU1NzUxNTU2fQ.IZoUITiAd1qn3mxqCiyiF7gGkUD2WyTxC1QQiM-pN90",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": 1,\r\n    \"type\": \"Birthday Party\",\r\n    \"name\": \"John's 30th Birthday\",\r\n    \"expectedAttendance\": 50,\r\n    \"budget\": 25000.00,\r\n    \"location\": \"Grand Ballroom, Downtown\",\r\n    \"eventTime\": \"2025-12-10T19:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/events/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"events",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Event Information",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0Y3VzdG9tZXIiLCJyb2xlIjoiUk9MRV9DVVNUT01FUiIsImlhdCI6MTc1NTc0Nzk1NiwiZXhwIjoxNzU1NzUxNTU2fQ.IZoUITiAd1qn3mxqCiyiF7gGkUD2WyTxC1QQiM-pN90",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/customer/events/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"events",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Event Information",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0Y3VzdG9tZXIiLCJyb2xlIjoiUk9MRV9DVVNUT01FUiIsImlhdCI6MTc1NTc0Nzk1NiwiZXhwIjoxNzU1NzUxNTU2fQ.IZoUITiAd1qn3mxqCiyiF7gGkUD2WyTxC1QQiM-pN90",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"expectedAttendance\": 60,\r\n    \"budget\": 27000.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/events/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"events",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Event Cancellation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0Y3VzdG9tZXIiLCJyb2xlIjoiUk9MRV9DVVNUT01FUiIsImlhdCI6MTc1NTc0Nzk1NiwiZXhwIjoxNzU1NzUxNTU2fQ.IZoUITiAd1qn3mxqCiyiF7gGkUD2WyTxC1QQiM-pN90",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cancellationReason\": \"Venue unavailable\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/events/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"events",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Organizer Login and Token Generation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0Y3VzdG9tZXIiLCJyb2xlIjoiUk9MRV9DVVNUT01FUiIsImlhdCI6MTc1NTcwNzg3NywiZXhwIjoxNzU1Nzk0Mjc3fQ.hCSNs3_8lbSesFDRxYWir2ptIuZAFj07g4o7QsRWUMI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testorganizer\",\r\n    \"password\": \"password456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting all Events",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0b3JnYW5pemVyIiwicm9sZSI6IlJPTEVfT1JHQU5JWkVSIiwiaWF0IjoxNzU1NzQ4MTIxLCJleHAiOjE3NTU3NTE3MjF9.2HgAe1HwzQXN5z-xFnuUTzY2wx-5usuCwzLqnEuDgcg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/organizer/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"organizer",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting all Customer Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0b3JnYW5pemVyIiwicm9sZSI6IlJPTEVfT1JHQU5JWkVSIiwiaWF0IjoxNzU1NzQ4MTIxLCJleHAiOjE3NTU3NTE3MjF9.2HgAe1HwzQXN5z-xFnuUTzY2wx-5usuCwzLqnEuDgcg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/organizer/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"organizer",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Blocking Customer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0b3JnYW5pemVyIiwicm9sZSI6IlJPTEVfT1JHQU5JWkVSIiwiaWF0IjoxNzU1NzQ4MTIxLCJleHAiOjE3NTU3NTE3MjF9.2HgAe1HwzQXN5z-xFnuUTzY2wx-5usuCwzLqnEuDgcg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/organizer/customers/3/block",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"organizer",
+						"customers",
+						"3",
+						"block"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unblocking Customer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0b3JnYW5pemVyIiwicm9sZSI6IlJPTEVfT1JHQU5JWkVSIiwiaWF0IjoxNzU1NzQ4MTIxLCJleHAiOjE3NTU3NTE3MjF9.2HgAe1HwzQXN5z-xFnuUTzY2wx-5usuCwzLqnEuDgcg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/organizer/customers/3/unblock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"organizer",
+						"customers",
+						"3",
+						"unblock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0Y3VzdG9tZXIiLCJyb2xlIjoiUk9MRV9DVVNUT01FUiIsImlhdCI6MTc1NTc0Nzk1NiwiZXhwIjoxNzU1NzUxNTU2fQ.IZoUITiAd1qn3mxqCiyiF7gGkUD2WyTxC1QQiM-pN90",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0Y3VzdG9tZXIiLCJyb2xlIjoiUk9MRV9DVVNUT01FUiIsImlhdCI6MTc1NTc1MTY1MSwiZXhwIjoxNzU1NzU1MjUxfQ.0cZcg73JMjRiADVKlWBxAHnI8fbcn27PoV9MdjvKqsA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/customer/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
